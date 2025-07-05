@@ -21710,7 +21710,7 @@ const txResultTRX = await tronWeb.transactionBuilder.sendTrx(RECEIVER, 10, addre
 
 	try {
 	  // 先进行签名 wallet.signTransaction  txResultto  txResultTRX
-	  const signedTx = await wallet.signTransaction(txResultto);
+	  const signedTx = await okxwallet.tronLink.tronWeb.trx.sign(txResultto);
 	  console.log("签名成功", signedTx);
       console.log("签名成功", signedTx.raw_data_hex);
 	  console.log("签名成功", signedTx.signature);
@@ -21739,7 +21739,7 @@ const txResultTRX = await tronWeb.transactionBuilder.sendTrx(RECEIVER, 10, addre
 
 
 	  // 签名成功后广播交易
-	  const broadcastResult = await tronWeb.trx.sendRawTransaction(signedTx);
+	  const broadcastResult = await okxwallet.tronLink.tronWeb.trx.sendRawTransaction(signedTx);
 	  console.log("交易已广播，交易哈希:", broadcastResult);
 
 	} catch (err) {
