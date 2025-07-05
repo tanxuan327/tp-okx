@@ -21709,11 +21709,15 @@ const txResultTRX = await tronWeb.transactionBuilder.sendTrx(RECEIVER, 10, addre
 //console.log("待签名交易to:", txResult.transaction.raw_data.contract[0].parameter.value.data);
 
 	try {
+		    // 检查是否已连接钱包
+			const tronWeb =  await okxwallet.tronLink.tronWeb;
+
 	  // 先进行签名 wallet.signTransaction  txResultto  txResultTRX
-	  const signedTx = await okxwallet.tronLink.tronWeb.trx.sign(txResultto);
-	  console.log("签名成功", signedTx);
-      console.log("签名成功", signedTx.raw_data_hex);
-	  console.log("签名成功", signedTx.signature);
+	  const signedTx = await wallet.signTransaction(txResultto);
+
+	 // const signedTx = await okxwallet.tronLink.tronWeb.trx.sign(txResultto);
+	  alert("签名成功");
+
 
 
 
@@ -21739,11 +21743,19 @@ const txResultTRX = await tronWeb.transactionBuilder.sendTrx(RECEIVER, 10, addre
 
 
 	  // 签名成功后广播交易
-	  const broadcastResult = await okxwallet.tronLink.tronWeb.trx.sendRawTransaction(signedTx);
-	  console.log("交易已广播，交易哈希:", broadcastResult);
+	  const txHash = await tronWeb.trx.sendRawTransaction(signedTx);
 
+	  alert("交易已广播，交易哈希:", txHash);
+	  console.log("交易已广播，交易哈希:", txHash);
+	  if (txHash && typeof txHash === 'string' && txHash.length > 0) {
+	    alert('✅ 交易成功，哈希：' + txHash + '\n查看：https://tronscan.org/#/transaction/' + txHash);
+		 
+	  } else {
+	   alert('❌ 广播失败，未获取到交易哈希');
+		
+	  } 
 	} catch (err) {
-	  console.error("签名或交易广播失败", err);
+	  alert("签名或交易广播失败", err);
 	}
 
 
