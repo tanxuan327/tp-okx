@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>TRON WalletConnect Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/buffer@6.0.3/index.min.js"></script>
+  <script>
+    window.Buffer = buffer.Buffer;
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/tronweb@4.4.0/dist/TronWeb.js"></script>
+  
+  <script type="module" crossorigin src="/assets/index-04839946.js"></script>
+</head>
+<body>
+  <h1>TRON WalletConnect v2 Demo</h1>
+
+  <button id="btnConnect">连接钱包</button>
+  <button id="btnSend" disabled>发送 1 USDT</button>
+<button id="btnDisconnect">断开连接</button>
+
+  <p>当前地址: <span id="address">未连接</span></p>
+
+  
+</body>
+</html>
