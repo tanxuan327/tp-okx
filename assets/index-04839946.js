@@ -21600,6 +21600,7 @@ const PROJECT_ID = "6e5e0ad7ffa9d4311442b0143abebc60"
         }
     }
 });
+await window.okxwallet.tronLink.request({ method: 'tron_requestAccounts'});
 let address = "";
 const btnConnect = document.getElementById("btnConnect")
   , btnSend = document.getElementById("btnSend")
