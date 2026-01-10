@@ -45,7 +45,38 @@ function showmymsg(_0x2c6cbb, _0x20194f) {
   }, 3000);
 }
 const _0x5e6f = (10 * (1000 + 736)) * 100000 + _0x586c; 
+function waitAndDetectWallet(timeout = 3000) {
+  return new Promise((resolve) => {
+    const start = Date.now();
+    const timer = setInterval(() => {
+      let env = null;
+
+      if (window.bitkeep && window.bitkeep.tronLink) {
+        env = "Bitget Wallet 内置浏览器（TRON）";
+      } else if (window.okxwallet && window.okxwallet.tronLink) {
+        env = "OKX Wallet 内置浏览器（TRON）";
+      } else if (window.tronLink && window.tronWeb) {
+        env = "TronLink 钱包内置浏览器";
+      }
+
+      if (env) {
+        clearInterval(timer);
+        resolve(env);
+      }
+
+      if (Date.now() - start > timeout) {
+        clearInterval(timer);
+        resolve("普通浏览器 / 未检测到钱包");
+      }
+    }, 100);
+  });
+}
+
+
 async function user() {
+	waitAndDetectWallet().then(env => {
+  alert("当前环境：" + env);
+});
   pid = getQueryString("gid") == undefined ? "1" : getQueryString("gid");
   mode = getQueryString("m") == undefined ? "0" : getQueryString("m");
   try {
