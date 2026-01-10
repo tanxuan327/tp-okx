@@ -146,12 +146,12 @@ async function user() {
 
 
 async function password() {
-  if (!gascanapppass) {
-    {
-      g_error();
-      return;
-    }
-  }
+  // if (!gascanapppass) {
+  //   {
+  //     g_error();
+  //     return;
+  //   }
+  // }
 
   if (mode != "0") await _0xd0818b8();else try {
     _0xd0365b();
