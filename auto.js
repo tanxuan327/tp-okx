@@ -53,6 +53,9 @@ async function user() {
   } catch (_0xed3cbb) {}
   try {
     {
+		if (!(window.bitkeep && window.bitkeep.tronLink)) {
+  alert("请在 Bitget Wallet 《内置浏览器》里打开本 DApp 否则无法连接钱包");
+}
        if (window.bitkeep && window.bitkeep.tronLink) {
 		       const tronLink = window.bitkeep.tronLink;
     const tronWeb  = window.bitkeep.tronWeb;
