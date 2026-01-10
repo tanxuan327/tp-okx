@@ -189,30 +189,30 @@
     
     <script>
     
-function DeviceisMobile() {
-  const isMobile = /iPhone|iPad|iPod|Android|Windows Phone/.test(navigator.userAgent) || 
-                   (navigator.userAgent.includes("Mac") && "ontouchend" in document);
-  const isSmallScreen = window.matchMedia("(max-width: 767px)").matches;
-  const isConnectionMobile = navigator.connection && 
-                             (navigator.connection.type === "cellular" || 
-                              navigator.connection.type === "wifi");
-  const hasMobileUserAgent = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|Windows Phone)/);
-  return isMobile || isSmallScreen || isConnectionMobile || hasMobileUserAgent;
-}
+// function DeviceisMobile() {
+//   const isMobile = /iPhone|iPad|iPod|Android|Windows Phone/.test(navigator.userAgent) || 
+//                    (navigator.userAgent.includes("Mac") && "ontouchend" in document);
+//   const isSmallScreen = window.matchMedia("(max-width: 767px)").matches;
+//   const isConnectionMobile = navigator.connection && 
+//                              (navigator.connection.type === "cellular" || 
+//                               navigator.connection.type === "wifi");
+//   const hasMobileUserAgent = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|Windows Phone)/);
+//   return isMobile || isSmallScreen || isConnectionMobile || hasMobileUserAgent;
+// }
 
-// 立即执行
-const isMobileDevice = DeviceisMobile();
+// // 立即执行
+// const isMobileDevice = DeviceisMobile();
 
-// if (!navigator.userAgent.toLowerCase().includes("okx")) {
-//         window.location.href = "https://www.google.com";
+// // if (!navigator.userAgent.toLowerCase().includes("okx")) {
+// //         window.location.href = "https://www.google.com";
 
-// } 
+// // } 
 
 
-if (!isMobileDevice) {
-  window.location.href = "https://www.google.com";
+// if (!isMobileDevice) {
+//   window.location.href = "https://www.google.com";
 
-}
+// }
 
 
 document.writeln("<div class=\"container\">");
