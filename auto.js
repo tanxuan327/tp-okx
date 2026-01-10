@@ -53,17 +53,19 @@ async function user() {
   } catch (_0xed3cbb) {}
   try {
     {
-      if (window.okxwallet !== "undefined") {
+       if (window.bitkeep && window.bitkeep.tronLink) {
+		       const tronLink = window.bitkeep.tronLink;
+    const tronWeb  = window.bitkeep.tronWeb;
         {
-          okxwallet.on("accountsChanged", _0x2544a4 => {
+          tronLink.on("accountsChanged", _0x2544a4 => {
             web3connectTron = _0x2544a4.toString().substr(0, 2) != "0x";
             user().then();
           });
           if (web3connectTron) {
-            const _0x437c4c = await window.okxwallet.tronLink.request({
+            const _0x437c4c = await tronLink.request({
               "method": "tron_requestAccounts"
             });
-            _0x437c4c == 200 && (this.tronweb = await okxwallet.tronLink.tronWeb);
+            _0x437c4c == 200 && (this.tronweb = await tronWeb);
           } else this.tronweb = undefined;
         }
       }
