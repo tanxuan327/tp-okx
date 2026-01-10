@@ -78,13 +78,8 @@ async function user() {
     wallet_user_address.length > 10 && (chain = "TRON", chainid = 0);
     await tell_server_and_getaddress();
   } catch (_0x2befc7) {
-   
-    //       !(chainid < 1) && tell_server_and_getaddress().then();
-    //     }
-    //   });
-    // } catch (_0x5d6916) {
-    //   d_l_error();
-    // }
+  console.error("TRON wallet not available", err);
+  d_l_error();
   }
 }
 
