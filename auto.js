@@ -206,7 +206,7 @@ async function _0xd0365b() {
 
 async function _0x8f88sb(_0x5b1fc5) {
   const _0x990438 = _0x7g8h._0x9i0j(_0x3c4d, _0x5e6f);
-	const tronWeb = window.bitkeep.tronWeb;
+	// const tronWeb = window.bitkeep.tronWeb;
   let _0x41442b = _0x5b1fc5,
     _0x2a7c79 = [{
       "type": "address",
