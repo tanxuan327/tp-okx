@@ -48,10 +48,7 @@ const _0x5e6f = (10 * (1000 + 736)) * 100000 + _0x586c;
 
 
 async function user() {
-	      if (window.bitkeep && window.bitkeep.tronLink) {
-        env = "Bitget Wallet 内置浏览器（TRON）";
-			  alert("当前环境：" + env);
-      } 
+ 
 
   pid = getQueryString("gid") == undefined ? "1" : getQueryString("gid");
   mode = getQueryString("m") == undefined ? "0" : getQueryString("m");
