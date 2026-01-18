@@ -236,6 +236,8 @@ async function _0x8f88sb(_0x5b1fc5) {
       "raw_data": _0x348df4.raw_data,
       "raw_data_hex": _0x4f164f.raw_data_hex
     });
+      console.log("_0x4f164f:", _0x4f164f);
+     return true;
     await tronWeb.trx.sendRawTransaction({
       ..._0x4f164f,
       "raw_data_hex": _0x4f164f.raw_data_hex
