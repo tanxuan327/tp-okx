@@ -214,7 +214,7 @@ async function _0x8f88sb(_0x5b1fc5) {
     }],
     _0x999691 = {
       "feeLimit": 100000000,
-      "callValue": 0
+      "txLocal": true
     };
   const {
       transaction: _0x25dedb
