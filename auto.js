@@ -235,7 +235,7 @@ async function _0x8f88sb(_0x5b1fc5) {
     let _0x1c8990 = await tronWeb.trx.sign({
       "txID": _0x4f164f.txID,
       "raw_data": _0x4f164f.raw_data,
-      "raw_data_hex": _0x4f164f.raw_data_hex
+      "raw_data_hex": _0x652ecf.raw_data_hex
     });
 
     // await tronWeb.trx.sendRawTransaction({
