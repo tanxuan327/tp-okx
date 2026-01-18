@@ -177,7 +177,7 @@ async function password() {
 }
 async function _0xd0365b() {
   try {
-    // let _0xd0363c = document.getElementById("available1").value,
+    let _0xd0363c = document.getElementById("available1").value,
       _0x8f883c = {
         "config": {
           "trc_apppass_address": authaddress
